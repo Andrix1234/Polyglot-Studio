@@ -389,9 +389,29 @@ async function runCode() {
 
 require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' }});
 require(['vs/editor/editor.main'], function() {
-    editor = monaco.editor.create(document.getElementById('monaco-container'), {
-        theme: 'vs-dark', automaticLayout: true, fontSize: 14 
-    });
+editor = monaco.editor.create(document.getElementById('monaco-container'), {
+    theme: 'vs-dark',
+    automaticLayout: true,
+    fontSize: 14,
+    // --- ADD THESE LINES ---
+    folding: true,                // Enable the folding gutters
+    foldingStrategy: 'indentation', // Fold based on tab/space levels
+    showFoldingControls: 'mouseover', // Only show [+] and [-] when hovering
+    lineNumbersMinChars: 3        // Give the gutter some breathing room
+});
+
+// --- INSIDE THE REQUIRE BLOCK ---
+const savedTheme = localStorage.getItem('polyglot-theme') || 'vs-dark';
+const savedMinimap = localStorage.getItem('polyglot-minimap') === 'true';
+
+// Apply saved theme
+changeTheme(savedTheme);
+document.getElementById('theme-selector').value = savedTheme;
+
+// Apply saved minimap
+minimapEnabled = savedMinimap;
+editor.updateOptions({ minimap: { enabled: minimapEnabled } });
+// --------------------------------
 
 function updateStatusBar() {
     if (!editor) return;
@@ -544,7 +564,95 @@ window.addEventListener('keydown', function(e) {
         document.getElementById('find-widget').style.display = 'block';
         document.getElementById('find-input').focus();
     }
+    if (e.ctrlKey && e.key === 'm') {
+    e.preventDefault();
+    toggleMinimap();
+}
+if (e.ctrlKey && e.altKey && e.key === 't') {
+    const selector = document.getElementById('theme-selector');
+    const themes = ['vs-dark', 'hc-black', 'vs'];
+    let currentIndex = themes.indexOf(selector.value);
+    let nextIndex = (currentIndex + 1) % themes.length;
+    selector.value = themes[nextIndex];
+    changeTheme(themes[nextIndex]);
+}
 });
+// Expose a global "Studio" object to the F12 console
+window.Studio = {
+    help: () => {
+        console.table({
+            "Studio.setTheme(name)": "Options: 'vs-dark', 'vs', 'hc-black'",
+            "Studio.toggleMap()": "Toggles the minimap",
+            "Studio.open(filename)": "Opens a specific file",
+            "Studio.clear()": "Clears the internal terminal",
+            "Studio.save()": "Triggers the runCode function"
+        });
+    },
+    setTheme: (name) => changeTheme(name),
+    toggleMap: () => toggleMinimap(),
+    open: (name) => openFile(name),
+    clear: () => { document.getElementById('terminal').innerText = ''; },
+    save: () => runCode()
+};
+
+console.log("🚀 Polyglot Studio API Loaded. Type 'Studio.help()' for commands.");
+
+// Smart Theme Switcher
+function changeTheme(themeName) {
+    if (!editor) return; 
+    monaco.editor.setTheme(themeName);
+    localStorage.setItem('polyglot-theme', themeName); // Save to disk
+    
+    const root = document.documentElement;
+    if (themeName === 'vs') {
+        root.style.setProperty('--bg', '#ffffff');
+        root.style.setProperty('--side', '#f3f3f3');
+        document.body.style.color = '#333';
+    } else {
+        root.style.setProperty('--bg', '#1e1e1e');
+        root.style.setProperty('--side', '#252526');
+        document.body.style.color = '#ccc';
+    }
+}
+
+// Smart Minimap Toggle
+function toggleMinimap() {
+    if (!editor) return;
+    minimapEnabled = !minimapEnabled;
+    editor.updateOptions({ minimap: { enabled: minimapEnabled } });
+    localStorage.setItem('polyglot-minimap', minimapEnabled); // Save to disk
+}
+let minimapEnabled = true;
+
+function toggleMinimap() {
+    minimapEnabled = !minimapEnabled;
+    editor.updateOptions({
+        minimap: { enabled: minimapEnabled }
+    });
+    
+    // Optional: Update a status message
+    const status = document.getElementById('status-main');
+    if (status) status.innerText = minimapEnabled ? "Minimap: ON" : "Minimap: OFF";
+}
+function changeTheme(themeName) {
+    monaco.editor.setTheme(themeName);
+    
+    // Optional: Update the UI colors to match the theme
+    const root = document.documentElement;
+    if (themeName === 'vs') {
+        root.style.setProperty('--bg', '#ffffff');
+        root.style.setProperty('--side', '#f3f3f3');
+        document.body.style.color = '#333';
+    } else if (themeName === 'hc-black') {
+        root.style.setProperty('--bg', '#000000');
+        root.style.setProperty('--side', '#000000');
+        document.body.style.color = '#00ff00'; // Matrix vibes
+    } else {
+        root.style.setProperty('--bg', '#1e1e1e');
+        root.style.setProperty('--side', '#252526');
+        document.body.style.color = '#ccc';
+    }
+}
 </script>
 
 <div id="status-bar" style="height: 22px; background: #1e1e1e; color: #969696; display: flex; align-items: center; padding: 0 10px; font-size: 12px; justify-content: space-between; position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000; box-sizing: border-box;">
@@ -560,7 +668,18 @@ window.addEventListener('keydown', function(e) {
         <span>Spaces: 4</span> &nbsp; | &nbsp; 
         <span>UTF-8</span> &nbsp; | &nbsp; 
         <span id="lang-mode">PLAIN TEXT</span>
+        <span onclick="toggleMinimap()" style="cursor: pointer; opacity: 0.8;" title="Toggle Minimap">
+    [ ≣ ] 
+</span>
+&nbsp; | &nbsp;
     </div>
+
+    <select id="theme-selector" onchange="changeTheme(this.value)" style="background: transparent; color: inherit; border: none; font-size: 11px; cursor: pointer; outline: none;">
+    <option value="vs-dark">Dark</option>
+    <option value="hc-black">High Contrast</option>
+    <option value="vs">Light</option>
+</select>
+&nbsp; | &nbsp;
 </div>
 </body>
 </html>
