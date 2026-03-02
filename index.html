@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A Web Coding Interface">
@@ -149,6 +151,18 @@
     opacity: 1;
     color: #fff;
 }
+
+.file-item i {
+    width: 18px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.file-item:hover i {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px currentColor);
+}
     </style>
 </head>
 <body>
@@ -230,6 +244,16 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
 <script>
+const extensionIcons = {
+    'js': 'devicon-javascript-plain colored',
+    'html': 'devicon-html5-plain colored',
+    'css': 'devicon-css3-plain colored',
+    'py': 'devicon-python-plain colored',
+    'json': 'devicon-json-plain colored',
+    'md': 'devicon-markdown-original',
+    'png': 'devicon-photoshop-plain',
+    'folder': 'devicon-opened-folder'
+};
 let editor;
 let currentFile = '';
 let openedFiles = {}; 
@@ -265,12 +289,12 @@ function renderTree(items, container, indent = 15) {
         const div = document.createElement('div');
         div.className = 'file-item';
         div.style.paddingLeft = `${indent}px`;
-        div.style.display = 'flex';
-        div.style.alignItems = 'center';
-        div.style.gap = '6px';
+        
+        const ext = item.name.split('.').pop().toLowerCase();
+        const iconClass = item.type === 'folder' ? 'devicon-apple-original' : (extensionIcons[ext] || 'devicon-file-plain');
 
         if (item.type === 'folder') {
-            div.innerHTML = `<span class="chevron" style="font-size:8px; transition: transform 0.1s;">❯</span> 📁 ${item.name}`;
+            div.innerHTML = `<span class="chevron">❯</span> <i class="${iconClass}"></i> ${item.name}`;
             const subContainer = document.createElement('div');
             subContainer.style.display = 'none';
             
@@ -285,7 +309,7 @@ function renderTree(items, container, indent = 15) {
             if (item.children) renderTree(item.children, subContainer, indent + 12);
             container.appendChild(subContainer);
         } else {
-            div.innerHTML = `📄 ${item.name}`;
+            div.innerHTML = `<i class="${iconClass}" style="font-size: 14px;"></i> ${item.name}`;
             div.onclick = (e) => { 
                 e.stopPropagation(); 
                 openFile(item.name); 
@@ -294,7 +318,6 @@ function renderTree(items, container, indent = 15) {
         }
     });
 }
-
 async function openFile(name) {
     if (currentFile && editor) openedFiles[currentFile] = editor.getValue();
     currentFile = name;
