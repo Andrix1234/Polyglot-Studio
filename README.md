@@ -1,24 +1,39 @@
-# 🚀 Polyglot Studio
+# ⚡ Polyglot Studio: Neural Core IDE
 
-A high-performance, web-based code editor with a focus on realtime visualization and multi-language support.
+**Polyglot Studio** is a lightweight, ultra-responsive web-based code editor featuring multi-tab support, live previewing, and a high-contrast futuristic aesthetic. It is engineered for developers who need a fast, zero-install environment for web experimentation and script testing.
 
-## ⚡ Core Features
-* **Monaco Editor:** Desktop-grade coding with IntelliSense.
-* **Ping-Pong Sync:** Instant, realtime updates to detached preview tabs via `BroadcastChannel`.
-* **Multi-Tab UI:** Fluid file management with persistent state.
-* **Smart Outline:** Automatic symbol and selector mapping for fast navigation.
-* **Integrated Shell:** Realtime backend terminal feedback.
+![Polyglot Studio Banner](link-to-your-icon.png)
 
-## 🛠️ Setup
-1. **Backend:** Run your Node.js server on `port 3001`.
-2. **Frontend:** Serve `index.html` via a local web server.
-3. **Sync:** Open a "Live Preview" and click the detach icon to test realtime broadcasting.
+## 🌟 Key Features
 
-## 📡 Sync Protocol
-- **Sender:** `syncChannel.postMessage` triggers on every keystroke.
-- **Receiver:** `channel.onmessage` replaces the preview DOM instantly without reloading.
+### 🧠 Monaco-Powered Intelligence
+Utilizes the same core engine as VS Code, providing features like:
+* **IntelliSense & Autocomplete:** Context-aware code suggestions.
+* **Syntax Highlighting:** Support for JavaScript, HTML, CSS, Python, and more.
+* **Multi-Cursor Editing:** Edit multiple lines at once for rapid refactoring.
+
+### 🏓 Real-Time Sync (The Ping-Pong Technique)
+Experience zero-latency updates with our custom synchronization engine:
+* **The Ping:** Every keystroke in the editor broadcasts a payload via the `BroadcastChannel` API.
+* **The Pong:** Internal iframes and detached pop-out windows listen for these pings and update their DOM content instantly without a full page reload.
+
+### 📂 Advanced Workspace Management
+* **Multi-Tab Architecture:** Open and switch between dozens of files while maintaining scroll position and undo history.
+* **Dynamic Explorer:** A nested file tree that reflects your backend structure in real-time.
+* **Symbol Outline:** An automatic scanner that parses your code for IDs, classes, and selectors for quick jumping.
+
+### 🖥️ Integrated System Vitals
+* **Live Preview:** Toggle a side-by-side view of your rendered web projects.
+* **Backend Terminal:** Integrated shell feedback from the Node.js server to debug scripts and view console logs.
+* **Visual Feedback:** A "Sync Dot" in the status bar blinks on every update, confirming your connection is live.
 
 
 
-## 📝 License
-MIT
+## 🛠️ Installation & Setup
+
+### 1. Backend Configuration
+Polyglot Studio requires a Node.js backend to handle file operations.
+```bash
+cd backend
+npm install
+node server.js
